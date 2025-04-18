@@ -18,32 +18,24 @@ function processPage() {
         if (clientId && clientId.length > 10 && /^[a-zA-Z0-9_-]+$/.test(clientId)) {
             console.log(`Element ${index}: Found valid client ID: ${clientId}`);
 
-            // Create a container for the QR code (using a span for inline behavior)
-            const qrCodeContainer = document.createElement('span');
-            qrCodeContainer.style.display = 'inline-block';
-            qrCodeContainer.style.marginLeft = '10px';
-            qrCodeContainer.style.verticalAlign = 'middle';
-            qrCodeContainer.style.width = '128px'; // Doubled size
-            qrCodeContainer.style.height = '128px'; // Doubled size
-            qrCodeContainer.title = clientId;
+            // Create a button to trigger QR code display
+            const showQrButton = document.createElement('button');
+            showQrButton.textContent = '[Show QR]';
+            showQrButton.style.marginLeft = '10px';
+            showQrButton.style.verticalAlign = 'middle';
+            showQrButton.style.fontSize = '10px';
+            showQrButton.style.padding = '2px 5px';
+            showQrButton.dataset.clientId = clientId; // Store client ID
+            showQrButton.dataset.index = index;     // Store index
+            showQrButton.title = `Show QR code for ${clientId}`;
 
-            // Add loading indicator
-            qrCodeContainer.textContent = 'Loading...';
-            qrCodeContainer.style.fontSize = '9px';
-            qrCodeContainer.style.textAlign = 'center';
-            qrCodeContainer.style.lineHeight = '128px'; // Doubled size
+            // Add click listener to the button
+            showQrButton.addEventListener('click', handleShowQrClick);
 
-            // Insert the QR code container immediately after the H3 element
+            // Insert the button immediately after the H3 element
             if (element.parentNode) {
-                console.log(`Element ${index}: Inserting QR code span after H3.`);
-                element.parentNode.insertBefore(qrCodeContainer, element.nextSibling);
-
-                // Use chrome.runtime.sendMessage to ask background script to generate QR code
-                chrome.runtime.sendMessage({
-                    action: "generateQrCode",
-                    text: clientId,
-                    index: index
-                });
+                console.log(`Element ${index}: Inserting [Show QR] button after H3.`);
+                element.parentNode.insertBefore(showQrButton, element.nextSibling);
             } else {
                 console.warn(`Element ${index}: Could not find parent node for H3:`, element);
             }
@@ -53,30 +45,94 @@ function processPage() {
     });
 }
 
-// Function to update the QR code container with image data
-function updateQrCodeContainer(index, imageData, error) {
-    // Find the container we created earlier
-    const containers = document.querySelectorAll('li.developed-app div.app-details > h3:nth-of-type(2) + span');
-    if (containers && containers[index]) {
-        const container = containers[index];
+// Handler for clicking the "[Show QR]" button
+function handleShowQrClick(event) {
+    const button = event.target;
+    const clientId = button.dataset.clientId;
+    const index = button.dataset.index;
 
-        if (imageData) {
-            // Create an image from the data URL
-            const img = new Image();
-            img.width = 128; // Doubled size
-            img.height = 128; // Doubled size
-            img.src = imageData;
-            container.innerHTML = ''; // Clear any previous content
-            container.appendChild(img);
-        } else {
-            // Display error indicator
-            container.textContent = '[QR ERR]';
-            container.style.color = 'red';
-            container.style.fontSize = '10px';
-            container.style.width = 'auto';
-            container.style.height = 'auto';
-            console.error('Error generating QR code:', error);
-        }
+    console.log(`Button clicked for index ${index}, client ID: ${clientId}`);
+
+    // Update button state to loading
+    button.textContent = 'Loading...';
+    button.disabled = true;
+
+    // Request QR code generation
+    chrome.runtime.sendMessage({
+        action: "generateQrCode",
+        text: clientId,
+        index: index
+    });
+}
+
+// Handler for clicking the QR code image to hide it
+function handleHideQrClick(event) {
+    const qrCodeContainer = event.target.parentNode; // Get the span container
+    const clientId = qrCodeContainer.dataset.clientId;
+    const index = qrCodeContainer.dataset.index;
+
+    console.log(`Hiding QR for index ${index}, client ID: ${clientId}`);
+
+    // Create a new "[Show QR]" button
+    const showQrButton = document.createElement('button');
+    showQrButton.textContent = '[Show QR]';
+    showQrButton.style.marginLeft = '10px';
+    showQrButton.style.verticalAlign = 'middle';
+    showQrButton.style.fontSize = '10px';
+    showQrButton.style.padding = '2px 5px';
+    showQrButton.dataset.clientId = clientId;
+    showQrButton.dataset.index = index;
+    showQrButton.title = `Show QR code for ${clientId}`;
+    showQrButton.addEventListener('click', handleShowQrClick);
+
+    // Replace the QR code container with the button
+    qrCodeContainer.parentNode.replaceChild(showQrButton, qrCodeContainer);
+}
+
+
+// Function to update the button with the QR code image or error
+function updateQrCodeContainer(index, imageData, error) {
+    // Find the specific button that was clicked using the index
+    const button = document.querySelector(`button[data-index="${index}"]`);
+
+    if (!button) {
+        console.error(`Could not find button with index ${index} to update.`);
+        return;
+    }
+
+    // Create a container span for the QR code or error message
+    const qrCodeContainer = document.createElement('span');
+    qrCodeContainer.style.display = 'inline-block';
+    qrCodeContainer.style.marginLeft = '10px';
+    qrCodeContainer.style.verticalAlign = 'middle';
+    qrCodeContainer.dataset.clientId = button.dataset.clientId; // Copy data for hiding
+    qrCodeContainer.dataset.index = index;
+
+    if (imageData) {
+        // Create an image from the data URL
+        const img = new Image();
+        img.width = 128; // Doubled size
+        img.height = 128; // Doubled size
+        img.src = imageData;
+        img.title = `Click to hide QR code for ${button.dataset.clientId}`;
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', handleHideQrClick); // Add listener to hide
+
+        qrCodeContainer.appendChild(img);
+    } else {
+        // Display error indicator
+        qrCodeContainer.textContent = '[QR ERR]';
+        qrCodeContainer.style.color = 'red';
+        qrCodeContainer.style.fontSize = '10px';
+        qrCodeContainer.title = `Error: ${error}`; // Show error on hover
+        console.error(`Error generating QR code for index ${index}:`, error);
+    }
+
+    // Replace the button with the QR code container (containing image or error)
+    if (button.parentNode) {
+        button.parentNode.replaceChild(qrCodeContainer, button);
+    } else {
+        console.error(`Could not find parent node for button with index ${index}.`);
     }
 }
 
