@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Reddit App Helper",
+    "version": "0.1",
+    "description": "Displays a QR code next to the client ID on the Reddit apps page.",
+    "permissions": [
+        "scripting",
+        "tabs",
+        "offscreen"
+    ],
+    "host_permissions": [
+        "https://www.reddit.com/prefs/apps/",
+        "https://old.reddit.com/prefs/apps/"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["qr-creator.js"],
+            "matches": ["https://www.reddit.com/*", "https://old.reddit.com/*"]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
