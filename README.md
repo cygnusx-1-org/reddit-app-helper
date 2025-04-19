@@ -19,6 +19,3 @@ This is a browser extension for `Chrome` based browsers and `Firefox` to add a `
 
 ### With Google Camera
 <img src="screenshots/example-with-google-camera.png"  width=50% height=50%>
-
-# QR code library used
-`Reddit-app-helper` uses [qr-creator](https://github.com/nimiq/qr-creator) as it's `QR code`
