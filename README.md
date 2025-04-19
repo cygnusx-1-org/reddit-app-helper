@@ -1,6 +1,9 @@
 # Reddit app helper
 
-This is a browser extension for `Chrome` based browsers and `Firefox` to add a `QR code` per [Client ID](https://github.com/edgan/Slide/blob/master/SETUP.md#reddit-client-id) to the page when on [https://www.reddit.com/prefs/apps](https://www.reddit.com/prefs/apps) or [https://old.reddit.com/prefs/apps](https://old.reddit.com/prefs/apps). Then you can scan the QR code in a Reddit app, a QR code scanner, [Google Lens](https://play.google.com/store/apps/details?id=com.google.ar.lens&hl=en_US), or [Google Camera](https://play.google.com/store/apps/details?id=com.google.android.GoogleCamera&hl=en_US).
+This is a browser extension for `Chrome` based browsers and `Firefox` to add a `QR code` per [client ID](https://github.com/edgan/Slide/blob/master/SETUP.md#reddit-client-id) to the page when on [https://www.reddit.com/prefs/apps](https://www.reddit.com/prefs/apps) or [https://old.reddit.com/prefs/apps](https://old.reddit.com/prefs/apps). Then you can scan the `QR code` in a `Reddit` app, a `QR code scanner, [Google Lens](https://play.google.com/store/apps/details?id=com.google.ar.lens&hl=en_US), or [Google Camera](https://play.google.com/store/apps/details?id=com.google.android.GoogleCamera&hl=en_US).
+
+## QR code library
+[Reddit-app-helper] uses [qr-creator](https://github.com/nimiq/qr-creator) as it's `QR code` library, and wouldn't exist without it.
 
 ## Example screenshots
 
@@ -16,3 +19,6 @@ This is a browser extension for `Chrome` based browsers and `Firefox` to add a `
 
 ### With Google Camera
 <img src="screenshots/example-with-google-camera.png"  width=50% height=50%>
+
+# QR code library used
+`Reddit-app-helper` uses [qr-creator](https://github.com/nimiq/qr-creator) as it's `QR code`
