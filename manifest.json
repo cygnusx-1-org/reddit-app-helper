@@ -3,14 +3,19 @@
     "name": "Reddit App Helper",
     "version": "0.1",
     "description": "Displays a QR code next to the client ID on the Reddit apps page.",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "reddit-app-helper@cygnusx-1.org",
+            "strict_min_version": "109.0"
+        }
+    },
     "permissions": [
         "scripting",
-        "tabs",
-        "offscreen"
+        "tabs"
     ],
     "host_permissions": [
-        "https://www.reddit.com/prefs/apps/",
-        "https://old.reddit.com/prefs/apps/"
+        "https://www.reddit.com/prefs/apps*",
+        "https://old.reddit.com/prefs/apps*"
     ],
     "web_accessible_resources": [
         {
@@ -19,6 +24,16 @@
         }
     ],
     "background": {
-        "service_worker": "background.js"
-    }
+        "service_worker": "background-wrapper.js",
+        "scripts": ["qr-creator.js", "background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.reddit.com/prefs/apps*",
+                "https://old.reddit.com/prefs/apps*"
+            ],
+            "js": ["qr-creator.js", "content.js"]
+        }
+    ]
 }
