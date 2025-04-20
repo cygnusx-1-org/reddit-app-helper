@@ -8,7 +8,7 @@ BUILD_DIR="builds"
 ZIP_FILENAME="${BUILD_DIR}/reddit-app-helper-${VERSION}.zip"
 XPI_FILENAME="${BUILD_DIR}/reddit-app-helper-${VERSION}.xpi"
 
-FILE_LIST=`find . -maxdepth 1 -type f -name '*.js' -o -name '*.json'`
+FILE_LIST=`find . -maxdepth 1 -type f -name '*.js' -o -name '*.json' ; find assets -type f`
 
 zip -q ${ZIP_FILENAME} ${FILE_LIST}
 

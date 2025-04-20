@@ -81,7 +81,7 @@ function processPage() {
             }
             const clientId = element.textContent.trim();
             if (clientId && clientId.length > 10 && /^[a-zA-Z0-9_-]+$/.test(clientId)) {
-                const showQrButton = createShowQrButton(clientId, 'reddit-' + Date.now(), `Show QR code for Reddit key: ${clientId}`);
+                const showQrButton = createShowQrButton(clientId, 'reddit-' + clientId, `Show QR code for Reddit key: ${clientId}`);
                 if (element.parentNode) {
                     element.parentNode.insertBefore(showQrButton, element.nextSibling);
                     processedElements.add(element);
@@ -99,7 +99,7 @@ function processPage() {
                 }
                 const text = element.textContent.trim();
                 if (text && text.length >= 20 && /^[a-zA-Z0-9_-]+$/.test(text)) {
-                    const showQrButton = createShowQrButton(text, 'reddit-alt-' + Date.now(), `Show QR code for Reddit key: ${text}`);
+                    const showQrButton = createShowQrButton(text, 'reddit-alt-' + text, `Show QR code for Reddit key: ${text}`);
                     element.parentNode.insertBefore(showQrButton, element.nextSibling);
                     processedElements.add(element);
                     processedAnyOnThisRun = true;
