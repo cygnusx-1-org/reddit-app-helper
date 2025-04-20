@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Reddit App Helper",
-    "version": "0.2",
+    "version": "0.3",
     "description": "Displays a QR code next to the client ID on the Reddit apps page.",
     "icons": {
         "128": "assets/logo.png"
