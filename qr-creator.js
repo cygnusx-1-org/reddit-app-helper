@@ -259,12 +259,20 @@ QrCreator['render'] = QrCreator.render;
         // Check for OffscreenCanvas first, as HTMLCanvasElement might not be defined in worker.
         let isUsableCanvas = false;
         if (typeof OffscreenCanvas !== 'undefined' && $element instanceof OffscreenCanvas) {
+            console.log("RAH QrCreator: Detected OffscreenCanvas.");
             isUsableCanvas = true;
         }
+        // Add back the check for HTMLCanvasElement, ensuring the type exists first
+        else if (typeof HTMLCanvasElement !== 'undefined' && $element instanceof HTMLCanvasElement) {
+            console.log("RAH QrCreator: Detected HTMLCanvasElement.");
+            isUsableCanvas = true;
+        }
+
         // Removed the check for HTMLCanvasElement as it causes ReferenceError in Service Worker.
         // This code path now assumes OffscreenCanvas is the only valid type when run from the background script.
 
         if (isUsableCanvas) {
+            console.log("RAH QrCreator: Canvas element is usable, proceeding with render.");
             if ($element.width !== settings.size || $element.height !== settings.size) {
                 $element.width = settings.size;
                 $element.height = settings.size;
