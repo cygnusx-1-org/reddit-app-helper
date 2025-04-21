@@ -1,0 +1,44 @@
+Privacy Policy for Reddit App Helper Extension
+
+Last Updated: April 21 2025
+
+Thank you for using the Reddit App Helper browser extension ("the Extension"). This Privacy Policy explains how the Extension handles information.
+
+1. Introduction
+The Reddit App Helper extension is designed to enhance your experience on the Reddit application management page (`reddit.com/prefs/apps`, `old.reddit.com/prefs/apps`) and the Giphy developer dashboard (`developers.giphy.com/dashboard`). Its primary function is to identify API keys or Client IDs displayed on these pages and provide a button to generate a QR code representation of that key/ID directly within your browser for easy scanning.
+
+2. Information We Handle
+The Extension interacts with the following information:
+Reddit Client IDs / Giphy API Keys: The Extension reads the Client IDs or API Keys directly from the HTML content of the specific Reddit or Giphy pages mentioned above that you are currently viewing.
+
+3. How Information is Used
+Local QR Code Generation: The Client ID or API key read from the page is used exclusively within your local browser environment to generate a QR code image. This process happens either in the extension's background script or directly within the content script running on the page, depending on your browser's capabilities and the extension's configuration.
+
+No Transmission: The Client ID/API key, or any other information from the page, is never transmitted to any external server, database, or third party. All processing occurs locally on your computer.
+
+No Storage: The Extension does not store your Client IDs/API keys or any other information persistently. The key/ID is only held temporarily in memory during the QR code generation process for the specific item you clicked on.
+
+4. Information We Do Not Collect
+The Reddit App Helper Extension does not collect, store, track, or transmit any personal information, including but not limited to:
+Your Reddit or Giphy username or password
+Your browsing history
+Your IP address
+Any data other than the Client IDs/API keys visible on the permitted pages.
+
+5. Permissions Justification
+The Extension requires the following browser permissions to function:
+Host Permissions (`https://www.reddit.com/prefs/apps*`, `https://old.reddit.com/prefs/apps*`, `https://developers.giphy.com/dashboard/*`): These permissions are required to allow the extension's content script (`content.js`) to run on the specific pages (Reddit App Preferences and Giphy Developer Dashboard) where API keys or Client IDs are displayed. This enables the script to find these keys and add the "[Show QR]" button next to them.
+
+The extension injects its content script and the necessary QR code generation library (`qr-creator.js`, listed in `web_accessible_resources`) directly onto these permitted pages based on the host permissions granted. It no longer requires broader permissions like 'scripting', 'tabs', or 'webNavigation'. All operations occur directly on the matched pages or within the extension's sandboxed background context.
+
+6. Third-Party Disclosure
+We do not sell, trade, or otherwise transfer any information to outside parties. As stated above, the Extension operates entirely locally within your browser.
+
+7. Changes to This Privacy Policy
+We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy within the extension's description or on an associated website. You are advised to review this Privacy Policy periodically for any changes.
+
+8. Contact Us
+If you have any questions about this Privacy Policy, please contact us at:
+Email address: reddit-helper-app@cygnusx-1.org
+Website: https://cygnusx-1.org/reddit-helper-app/
+GitHub repository: https://github.com/cygnusx-1-org/reddit-app-helper
