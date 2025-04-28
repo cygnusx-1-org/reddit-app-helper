@@ -3,14 +3,12 @@
 **Last Updated: April 27, 2025**
 
 ## Introduction
-
 This Privacy Policy describes how the Reddit App Helper browser extension
 ("we", "our", or "the extension") collects, uses, and shares information about
 you when you use our browser extension. We are committed to protecting your
 privacy and ensuring you have a positive experience when using our extension.
 
 ## Information We Collect
-
 ### Information You Provide Directly
 The Reddit App Helper extension does not collect any personal information
 directly from you. It does not require registration, account creation, or any
@@ -30,7 +28,6 @@ The extension accesses the following information to function properly:
 - DOM content of specified pages (to identify and process client IDs/API keys)
 
 ## How We Use Information
-
 The Reddit App Helper extension uses the information it accesses solely to:
 - Display QR codes next to client IDs and API keys on the specified websites
 - Enhance your user experience when working with Reddit and Giphy developer applications
@@ -39,7 +36,6 @@ All processing occurs locally within your browser. No data is transmitted
 outside your browser or stored persistently.
 
 ## Data Sharing and Disclosure
-
 We do not:
 - Collect your personal data
 - Store your client IDs or API keys
@@ -48,7 +44,6 @@ We do not:
 - Use your data for any purpose beyond the extension's core functionality
 
 ## Your Rights and Choices
-
 Since we do not collect or store personal information, there is no need for specific data
 subject access requests. However, you can:
 - Disable or uninstall the extension at any time through your browser's extension management interface
