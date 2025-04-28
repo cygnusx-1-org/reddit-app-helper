@@ -1,1 +1,34 @@
-../manifest-chrome.json
+{
+    "manifest_version": 3,
+    "name": "Reddit App Helper",
+    "version": "0.7",
+    "description": "Displays a QR code next to the client ID/API key on the Reddit apps page and Giphy developers dashboard.",
+    "icons": {
+        "128": "assets/logo.png"
+    },
+    "host_permissions": [
+        "https://www.reddit.com/prefs/apps*",
+        "https://old.reddit.com/prefs/apps*",
+        "https://developers.giphy.com/dashboard/*"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["qr-creator.js"],
+            "matches": [
+                "https://www.reddit.com/*",
+                "https://old.reddit.com/*",
+                "https://developers.giphy.com/*"
+            ]
+        }
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.reddit.com/prefs/apps*",
+                "https://old.reddit.com/prefs/apps*",
+                "https://developers.giphy.com/dashboard*"
+            ],
+            "js": ["qr-creator.js", "content.js"]
+        }
+    ]
+}
