@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Reddit App Helper",
-    "version": "0.6",
+    "version": "0.7",
     "description": "Displays a QR code next to the client ID/API key on the Reddit apps page and Giphy developers dashboard.",
     "icons": {
         "128": "assets/logo.png"
@@ -10,6 +10,11 @@
         "https://www.reddit.com/prefs/apps*",
         "https://old.reddit.com/prefs/apps*",
         "https://developers.giphy.com/dashboard/*"
+    ],
+    "permissions": [
+        "scripting",
+        "tabs",
+        "webNavigation"
     ],
     "web_accessible_resources": [
         {
