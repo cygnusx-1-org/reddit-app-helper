@@ -13,7 +13,7 @@ FIREFOX_VERSION=`cat ${MANIFEST_FIREFOX_FILENAME} | jq -r '.["version"]'`
 
 BUILD_DIR="builds"
 
-ZIP_FILENAME="${BUILD_DIR}/reddit-app-helper-${CHROME_VERSION}.zip"
+ZIP_FILENAME="${BUILD_DIR}/reddit-app-helper-${CHROME_VERSION}.crx"
 XPI_FILENAME="${BUILD_DIR}/reddit-app-helper-${FIREFOX_VERSION}.xpi"
 
 # Chrome
