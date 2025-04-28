@@ -1,0 +1,86 @@
+# Privacy Policy for Reddit App Helper(Firefox)
+
+**Last Updated: April 27, 2025**
+
+## Introduction
+
+This Privacy Policy describes how the Reddit App Helper browser extension
+("we", "our", or "the extension") collects, uses, and shares information about
+you when you use our browser extension. We are committed to protecting your
+privacy and ensuring you have a positive experience when using our extension.
+
+## Information We Collect
+
+### Information You Provide Directly
+The Reddit App Helper extension does not collect any personal information
+directly from you. It does not require registration, account creation, or any
+user input of personal data.
+
+### Information Collected Automatically
+When you use our extension on the specified websites (Reddit apps page and
+Giphy developers dashboard), the extension:
+- Accesses and reads the client IDs and API keys displayed on these pages
+- This data is processed locally in your browser to generate QR codes
+- This data is never transmitted to our servers or to any third parties
+
+### Technical Data
+The extension accesses the following information to function properly:
+- Browser tab information (to determine when you're on the relevant pages)
+- Web navigation data (to detect when you navigate to the relevant pages)
+- DOM content of specified pages (to identify and process client IDs/API keys)
+
+## How We Use Information
+
+The Reddit App Helper extension uses the information it accesses solely to:
+- Display QR codes next to client IDs and API keys on the specified websites
+- Enhance your user experience when working with Reddit and Giphy developer applications
+
+All processing occurs locally within your browser. No data is transmitted
+outside your browser or stored persistently.
+
+## Data Sharing and Disclosure
+
+We do not:
+- Collect your personal data
+- Store your client IDs or API keys
+- Transmit any information to our servers or third parties
+- Share any information with advertisers or analytics providers
+- Use your data for any purpose beyond the extension's core functionality
+
+## Your Rights and Choices
+
+Since we do not collect or store personal information, there is no need for specific data
+subject access requests. However, you can:
+- Disable or uninstall the extension at any time through your browser's extension management interface
+- Control the extension's permissions through your browser settings
+
+## Data Security
+Since all processing occurs locally within your browser and no data is
+collected, transmitted, or stored externally, the extension presents minimal
+security risks to your data.
+
+## Changes to This Privacy Policy
+We may update this Privacy Policy from time to time. We will notify you of any
+changes by posting the new Privacy Policy on the extension's page in the
+browser's extension store. You are advised to review this Privacy Policy
+periodically for any changes.
+
+## Contact Us
+If you have any questions about this Privacy Policy or our practices, please contact us at:
+- Email: reddit-app-helper@cygnusx-1.org
+- Website: https://github.com/cygnusx-1-org/reddit-app-helper/
+
+## Browser Permissions Explained
+For full transparency, here's why our extension requires certain permissions:
+
+- **scripting**: Allows the extension to execute scripts on the specified web pages to identify client IDs/API keys and generate QR codes
+- **tabs**: Allows the extension to detect when you navigate to the relevant pages
+- **webNavigation**: Allows the extension to determine when page navigation occurs to properly initialize the extension
+
+## Host Permissions Explained
+The extension only operates on these specific pages:
+- https://www.reddit.com/prefs/apps*
+- https://old.reddit.com/prefs/apps*
+- https://developers.giphy.com/dashboard/*
+
+The extension does not access or process any data on other websites.
