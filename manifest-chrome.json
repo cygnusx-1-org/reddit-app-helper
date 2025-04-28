@@ -11,11 +11,6 @@
         "https://old.reddit.com/prefs/apps*",
         "https://developers.giphy.com/dashboard/*"
     ],
-    "permissions": [
-        "scripting",
-        "tabs",
-        "webNavigation"
-    ],
     "web_accessible_resources": [
         {
             "resources": ["qr-creator.js"],
@@ -26,9 +21,6 @@
             ]
         }
     ],
-    "background": {
-        "service_worker": "background-wrapper.js"
-    },
     "content_scripts": [
         {
             "matches": [
